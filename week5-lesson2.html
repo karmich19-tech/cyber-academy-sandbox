@@ -13,24 +13,22 @@ CORRECT_USERNAME = "agent_m"
 CORRECT_PASSWORD = "Morpheus2024!"
 MAX_ATTEMPTS = 3
 
+attempts = 0
+
 print("=== MORPHEUS SECURITY SYSTEMS ===")
 print("Please log in to continue.")
 print()
 
-# Your mission: write the login logic here using if/elif/else
+# Your mission: write the login logic here
 # It should:
 #   - Ask for username and password
 #   - Check if both are correct
-#   - Handle up to 3 attempts
-#   - Print an appropriate ACCESS GRANTED / ACCESS DENIED message
+#   - Count failed attempts
+#   - Lock after MAX_ATTEMPTS failures
+#   - Print success or failure message each time
 
-username = input("Username: ")
-password = input("Password: ")
-
-if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
-    print("ACCESS GRANTED. Welcome, " + username + ".")
-else:
-    print("Access denied. 2 attempts remaining.")
+# HINT: you will need a while loop (we will learn these next week)
+# For now, use if/elif/else to handle 3 specific attempt scenarios
   </py-editor>
 </body>
 </html>
