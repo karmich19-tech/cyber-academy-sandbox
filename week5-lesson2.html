@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+  <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+</head>
+<body>
+  <py-editor>
+# SECURE LOGIN SIMULATION - Morpheus Security Systems
+# Stored credentials (in a real system these would be hashed!)
+CORRECT_USERNAME = "agent_m"
+CORRECT_PASSWORD = "Morpheus2024!"
+MAX_ATTEMPTS = 3
+
+print("=== MORPHEUS SECURITY SYSTEMS ===")
+print("Please log in to continue.")
+print()
+
+# Your mission: write the login logic here using if/elif/else
+# It should:
+#   - Ask for username and password
+#   - Check if both are correct
+#   - Handle up to 3 attempts
+#   - Print an appropriate ACCESS GRANTED / ACCESS DENIED message
+
+username = input("Username: ")
+password = input("Password: ")
+
+if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
+    print("ACCESS GRANTED. Welcome, " + username + ".")
+else:
+    print("Access denied. 2 attempts remaining.")
+  </py-editor>
+</body>
+</html>
