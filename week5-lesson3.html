@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+  <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+</head>
+<body>
+  <py-editor>
+password = input("Enter a password: ")
+
+# TODO 1: Check length >= 12
+has_length = len(password) >= 12
+
+# TODO 2: Check for uppercase letter
+has_upper = any(c.isupper() for c in password)
+
+# TODO 3: Check for digit
+has_digit = any(c.isdigit() for c in password)
+
+# TODO 4: Check for special character
+specials = "!@#$%^&amp;*"
+has_special = any(c in specials for c in password)
+
+# TODO 5: Count how many checks pass
+score = sum([has_length, has_upper, has_digit, has_special])
+
+# TODO 6: Print WEAK / MODERATE / STRONG / VERY STRONG
+if score <= 1:
+    print("WEAK")
+elif score == 2:
+    print("MODERATE")
+elif score == 3:
+    print("STRONG")
+else:
+    print("VERY STRONG")
+  </py-editor>
+</body>
+</html>
