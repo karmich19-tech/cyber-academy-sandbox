@@ -1,0 +1,26 @@
+{
+  "title": "\ud83d\udcbb Mission 2 \u2014 Secure Login Simulation",
+  "subtitle": "Repair the Morpheus Security Systems login check.",
+  "instructions": "<strong>Your mission:</strong> complete the login logic by replacing each\n<strong>???</strong>.<br><br>\nThe program must ask for a username and password, compare both entries with\nthe stored credentials, and display either <strong>ACCESS GRANTED</strong> or\n<strong>ACCESS DENIED</strong>.",
+  "starterCode": "# SECURE LOGIN SIMULATION - Morpheus Security Systems\n\n# Stored credentials\n# In a real system, passwords should never be stored as plain text.\nCORRECT_USERNAME = \"agent_m\"\nCORRECT_PASSWORD = \"Morpheus2024!\"\n\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Please log in to continue.\")\nprint()\n\n# Step 1: Collect the user's login details\nusername = input(\"Username: \")\npassword = input(\"Password: \")\n\n# Step 2: Check both entries\n# Replace ??? with the correct condition\nif ???:\n    print(\"ACCESS GRANTED\")\n    print(\"Welcome, Agent M.\")\nelse:\n    print(\"ACCESS DENIED\")\n    print(\"Incorrect username or password.\")\n",
+  "hints": [
+    "Use == to compare a value with the stored username or password.",
+    "Both the username and password must be correct, so join the two comparisons using and.",
+    "The full condition begins: username == CORRECT_USERNAME and ..."
+  ],
+  "codeChecks": [
+    {
+      "contains": "username == CORRECT_USERNAME",
+      "message": "Compare username with CORRECT_USERNAME using ==."
+    },
+    {
+      "contains": "password == CORRECT_PASSWORD",
+      "message": "Compare password with CORRECT_PASSWORD using ==."
+    },
+    {
+      "contains": " and ",
+      "message": "Join the two comparisons using and."
+    }
+  ],
+  "successMessage": "Your login condition contains the required comparisons. Run the program and test both correct and incorrect credentials."
+}
