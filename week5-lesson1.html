@@ -3,109 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Academy Python Sandbox</title>
 
-  <title>Morpheus Agent ID Generator</title>
-
-  <link
-    rel="stylesheet"
-    href="https://pyscript.net/releases/2026.7.2/core.css"
-  >
-
-  <script
-    type="module"
-    src="https://pyscript.net/releases/2026.7.2/core.js">
-  </script>
+  <!-- Pyodide runs Python inside the browser -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.js"></script>
 
   <style>
+    :root {
+      --navy: #10283f;
+      --blue: #2874a6;
+      --light-blue: #eaf4fb;
+      --border: #c8d3dc;
+      --console: #101820;
+      --console-text: #e8f3f8;
+      --danger: #b42318;
+      --success: #147a3d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #17202a;
+    }
+
+    .sandbox {
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .header {
+      padding: 18px 20px;
+      background: var(--navy);
+      color: #ffffff;
+    }
+
+    .header h1 {
+      margin: 0 0 5px;
+      font-size: 24px;
+    }
+
+    .header p {
+      margin: 0;
+      line-height: 1.45;
     }
 
     .instructions {
-      padding: 12px;
-      margin-bottom: 16px;
-      background: #eef6fc;
-      border-left: 5px solid #2874a6;
+      padding: 14px 20px;
+      background: var(--light-blue);
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 16px;
+      background: #f7f9fb;
+      border-bottom: 1px solid var(--border);
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #runButton {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    #resetButton {
+      background: #dfe6eb;
+      color: #17202a;
+    }
+
+    #clearButton {
+      background: #dfe6eb;
+      color: #17202a;
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    #status {
+      margin-left: auto;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+      min-height: 560px;
+    }
+
+    .panel {
+      min-width: 0;
+    }
+
+    .panel-title {
+      padding: 10px 14px;
+      background: #eef2f5;
+      border-bottom: 1px solid var(--border);
+      font-weight: 700;
+    }
+
+    .editor-panel {
+      border-right: 1px solid var(--border);
+    }
+
+    .editor-wrap {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      height: 510px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    #lineNumbers {
+      margin: 0;
+      padding: 14px 10px 14px 0;
+      overflow: hidden;
+      text-align: right;
+      user-select: none;
+      color: #6b7780;
+      background: #f4f6f8;
+      border-right: 1px solid #dfe5e9;
+      font: 15px/1.55 Consolas, "Courier New", monospace;
+      white-space: pre;
+    }
+
+    #codeEditor {
+      width: 100%;
+      height: 100%;
+      resize: none;
+      border: 0;
+      outline: none;
+      padding: 14px;
+      tab-size: 4;
+      color: #17202a;
+      background: #ffffff;
+      font: 15px/1.55 Consolas, "Courier New", monospace;
+      white-space: pre;
+      overflow: auto;
+    }
+
+    #console {
+      height: 510px;
+      margin: 0;
+      padding: 14px;
+      overflow: auto;
+      color: var(--console-text);
+      background: var(--console);
+      font: 15px/1.55 Consolas, "Courier New", monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .note {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border);
+      color: #52616b;
+      background: #fafbfc;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 820px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .editor-panel {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      #status {
+        width: 100%;
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 
 <body>
+  <main class="sandbox">
+    <header class="header">
+      <h1>💻 Mission 1 — Agent ID Generator</h1>
+      <p>Edit the Python code, select <strong>Run Code</strong>, and respond to each pop-up input prompt.</p>
+    </header>
 
-  <h2>Morpheus Security Systems: Agent ID Generator</h2>
+    <section class="instructions">
+      Replace each <strong>???</strong> with the correct variable. The program should display:
+      <strong>AGENT-[SECTOR]-[BADGE]: [NAME]</strong>.
+    </section>
 
-  <div class="instructions">
-    Follow the prompts in the terminal. Type each answer and press
-    <strong>Enter</strong>.
-  </div>
+    <div class="toolbar">
+      <button id="runButton" type="button" disabled>▶ Run Code</button>
+      <button id="resetButton" type="button">↺ Reset Code</button>
+      <button id="clearButton" type="button">Clear Output</button>
+      <span id="status">Loading Python…</span>
+    </div>
 
-  <script type="mpy" terminal worker>
+    <section class="workspace">
+      <div class="panel editor-panel">
+        <div class="panel-title">Python editor</div>
+        <div class="editor-wrap">
+          <pre id="lineNumbers" aria-hidden="true">1</pre>
+          <textarea id="codeEditor" spellcheck="false" aria-label="Python code editor"></textarea>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Program output</div>
+        <pre id="console">Python is loading. Please wait…</pre>
+      </div>
+    </section>
+
+    <div class="note">
+      Student entries are not saved automatically. Copy the completed code before leaving the page if it needs to be submitted.
+    </div>
+  </main>
+
+  <script>
+    const starterCode = `# AGENT ID GENERATOR - Morpheus Security Systems
+# Mission: complete the code below
+
+# Step 1: Collect user input
 name = input("Enter your full name: ")
 badge = input("Enter your 3-digit badge number: ")
 sector = input("Enter your sector (Alpha/Beta/Delta): ")
-
-agent_id = "AGENT-" + sector.upper() + "-" + badge + ": " + name.title()
-
-print()
-print("=== MORPHEUS SECURITY SYSTEMS ===")
-print("Agent ID:", agent_id)
-print("Status: ACTIVE")
-  </script>
-
-</body>
-</html><!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Morpheus Python Sandbox</title>
-
-  <link
-    rel="stylesheet"
-    href="https://pyscript.net/releases/2026.7.2/core.css"
-  >
-
-  <script
-    type="module"
-    src="https://pyscript.net/releases/2026.7.2/core.js">
-  </script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-
-    h2 {
-      margin-bottom: 5px;
-    }
-
-    .instructions {
-      margin-bottom: 15px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <h2>Morpheus Security Systems: Agent ID Generator</h2>
-
-  <p class="instructions">
-    Enter your details between the quotation marks. Then replace each
-    <strong>???</strong> with the correct variable and select
-    <strong>Run</strong>.
-  </p>
-
-  <script type="py-editor">
-# AGENT ID GENERATOR - Morpheus Security Systems
-# Mission: complete the code below
-
-# Step 1: Enter your details between the quotation marks
-name = "Enter your full name"
-badge = "Enter your 3-digit badge number"
-sector = "Enter Alpha, Beta or Delta"
 
 # Step 2: Build the Agent ID
 # Replace each ??? with the correct variable
@@ -114,8 +261,148 @@ agent_id = "AGENT-" + ??? + "-" + ??? + ": " + ???
 # Step 3: Display the result
 print("=== MORPHEUS SECURITY SYSTEMS ===")
 print("Agent ID:", ???)
-print("Status: ACTIVE")
-  </script>
+print("Status: ACTIVE")`;
 
+    const editor = document.getElementById("codeEditor");
+    const lineNumbers = document.getElementById("lineNumbers");
+    const consoleOutput = document.getElementById("console");
+    const runButton = document.getElementById("runButton");
+    const resetButton = document.getElementById("resetButton");
+    const clearButton = document.getElementById("clearButton");
+    const statusText = document.getElementById("status");
+
+    let pyodide = null;
+
+    editor.value = starterCode;
+    updateLineNumbers();
+
+    function updateLineNumbers() {
+      const count = editor.value.split("\n").length;
+      lineNumbers.textContent = Array.from(
+        { length: count },
+        (_, index) => index + 1
+      ).join("\n");
+    }
+
+    function appendOutput(text) {
+      consoleOutput.textContent += String(text);
+      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+
+    function clearOutput(message = "") {
+      consoleOutput.textContent = message;
+    }
+
+    editor.addEventListener("input", updateLineNumbers);
+
+    editor.addEventListener("scroll", () => {
+      lineNumbers.scrollTop = editor.scrollTop;
+    });
+
+    editor.addEventListener("keydown", (event) => {
+      if (event.key === "Tab") {
+        event.preventDefault();
+        const start = editor.selectionStart;
+        const end = editor.selectionEnd;
+        editor.value =
+          editor.value.substring(0, start) +
+          "    " +
+          editor.value.substring(end);
+        editor.selectionStart = editor.selectionEnd = start + 4;
+        updateLineNumbers();
+      }
+    });
+
+    resetButton.addEventListener("click", () => {
+      editor.value = starterCode;
+      updateLineNumbers();
+      clearOutput("Starter code restored.\n");
+      editor.focus();
+    });
+
+    clearButton.addEventListener("click", () => {
+      clearOutput("");
+    });
+
+    async function initialisePython() {
+      try {
+        pyodide = await loadPyodide({
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/"
+        });
+
+        pyodide.setStdout({
+          batched: (text) => appendOutput(text + "\n")
+        });
+
+        pyodide.setStderr({
+          batched: (text) => appendOutput(text + "\n")
+        });
+
+        statusText.textContent = "Python ready";
+        statusText.style.color = "#147a3d";
+        runButton.disabled = false;
+        clearOutput("Python is ready. Edit the code and select Run Code.\n");
+      } catch (error) {
+        statusText.textContent = "Python failed to load";
+        statusText.style.color = "#b42318";
+        clearOutput(
+          "Python could not load.\n\n" +
+          "Check the internet connection or ask your teacher to open the activity in a new tab.\n\n" +
+          String(error)
+        );
+      }
+    }
+
+    runButton.addEventListener("click", async () => {
+      if (!pyodide) {
+        clearOutput("Python is still loading. Please wait.\n");
+        return;
+      }
+
+      runButton.disabled = true;
+      statusText.textContent = "Running…";
+      statusText.style.color = "#17202a";
+      clearOutput("");
+
+      /*
+        This replaces Python's normal input() with a browser pop-up.
+        It is more reliable inside GitHub Pages and a QLearn iframe than
+        a worker-based terminal requiring special server headers.
+      */
+      const inputSetup = `
+import builtins
+from js import window
+
+def _browser_input(message=""):
+    answer = window.prompt(str(message))
+    if answer is None:
+        raise KeyboardInterrupt("Input cancelled by user")
+    return str(answer)
+
+builtins.input = _browser_input
+`;
+
+      try {
+        await pyodide.runPythonAsync(inputSetup);
+        await pyodide.loadPackagesFromImports(editor.value);
+        await pyodide.runPythonAsync(editor.value);
+
+        if (!consoleOutput.textContent.trim()) {
+          appendOutput("Program finished with no printed output.\n");
+        }
+
+        statusText.textContent = "Run complete";
+        statusText.style.color = "#147a3d";
+      } catch (error) {
+        appendOutput("\n" + String(error) + "\n");
+        statusText.textContent = "Check the error";
+        statusText.style.color = "#b42318";
+      } finally {
+        runButton.disabled = false;
+      }
+    });
+
+    initialisePython();
+  </script>
 </body>
 </html>
