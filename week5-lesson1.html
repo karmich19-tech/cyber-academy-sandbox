@@ -1,12 +1,47 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
-  <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Morpheus Python Sandbox</title>
+
+  <link
+    rel="stylesheet"
+    href="https://pyscript.net/releases/2026.7.2/core.css"
+  >
+
+  <script
+    type="module"
+    src="https://pyscript.net/releases/2026.7.2/core.js">
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    .instructions {
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
+
 <body>
-  <py-editor>
+
+  <h2>Morpheus Security Systems: Agent ID Generator</h2>
+
+  <p class="instructions">
+    Complete the missing sections marked with <strong>???</strong>,
+    then select <strong>Run</strong>.
+  </p>
+
+  <script type="py-editor">
 # AGENT ID GENERATOR - Morpheus Security Systems
 # Mission: complete the code below
 
@@ -15,13 +50,15 @@ name = input("Enter your full name: ")
 badge = input("Enter your 3-digit badge number: ")
 sector = input("Enter your sector (Alpha/Beta/Delta): ")
 
-# Step 2: Build the Agent ID (currently broken - fix it!)
+# Step 2: Build the Agent ID
+# Replace each ??? with the correct variable
 agent_id = "AGENT-" + ??? + "-" + ??? + ": " + ???
 
 # Step 3: Display the result
 print("=== MORPHEUS SECURITY SYSTEMS ===")
 print("Agent ID:", ???)
 print("Status: ACTIVE")
-  </py-editor>
+  </script>
+
 </body>
 </html>
