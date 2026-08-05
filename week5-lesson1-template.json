@@ -1,0 +1,29 @@
+{
+  "title": "\ud83d\udcbb Mission 1 \u2014 Agent ID Generator",
+  "subtitle": "Create a formatted Morpheus agent identification code.",
+  "instructions": "Replace each <strong>???</strong> with the correct variable. The final result\nshould use the format <strong>AGENT-[SECTOR]-[BADGE]: [NAME]</strong>.",
+  "starterCode": "# AGENT ID GENERATOR - Morpheus Security Systems\n\nname = input(\"Enter your full name: \")\nbadge = input(\"Enter your 3-digit badge number: \")\nsector = input(\"Enter your sector (Alpha/Beta/Delta): \")\n\nagent_id = \"AGENT-\" + ??? + \"-\" + ??? + \": \" + ???\n\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Agent ID:\", ???)\nprint(\"Status: ACTIVE\")\n",
+  "hints": [
+    "The required order is sector, badge, then name.",
+    "Use the variable agent_id in the final print statement."
+  ],
+  "codeChecks": [
+    {
+      "contains": "sector",
+      "message": "Use the sector variable."
+    },
+    {
+      "contains": "badge",
+      "message": "Use the badge variable."
+    },
+    {
+      "contains": "name",
+      "message": "Use the name variable."
+    },
+    {
+      "contains": "print(\"Agent ID:\", agent_id)",
+      "message": "Print the agent_id variable."
+    }
+  ],
+  "successMessage": "Your code includes the required variables. Run it and check the Agent ID format."
+}
