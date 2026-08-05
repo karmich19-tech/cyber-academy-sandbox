@@ -4,6 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Morpheus Agent ID Generator</title>
+
+  <link
+    rel="stylesheet"
+    href="https://pyscript.net/releases/2026.7.2/core.css"
+  >
+
+  <script
+    type="module"
+    src="https://pyscript.net/releases/2026.7.2/core.js">
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .instructions {
+      padding: 12px;
+      margin-bottom: 16px;
+      background: #eef6fc;
+      border-left: 5px solid #2874a6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Morpheus Security Systems: Agent ID Generator</h2>
+
+  <div class="instructions">
+    Follow the prompts in the terminal. Type each answer and press
+    <strong>Enter</strong>.
+  </div>
+
+  <script type="mpy" terminal worker>
+name = input("Enter your full name: ")
+badge = input("Enter your 3-digit badge number: ")
+sector = input("Enter your sector (Alpha/Beta/Delta): ")
+
+agent_id = "AGENT-" + sector.upper() + "-" + badge + ": " + name.title()
+
+print()
+print("=== MORPHEUS SECURITY SYSTEMS ===")
+print("Agent ID:", agent_id)
+print("Status: ACTIVE")
+  </script>
+
+</body>
+</html><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Morpheus Python Sandbox</title>
 
   <link
