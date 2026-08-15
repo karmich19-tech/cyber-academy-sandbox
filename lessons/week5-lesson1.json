@@ -1,0 +1,31 @@
+{
+  "title": "💻 Mission 1 — Agent ID Generator",
+  "subtitle": "Create your official Morpheus Security Systems Agent ID.",
+  "instructions": "<strong>Your mission:</strong> complete the Agent ID Generator by replacing each <strong>???</strong>.<br><br>The program must collect your first name, team and a 3-digit agent number. It will then combine these details to create your unique Morpheus Agent ID.<br><br>Your completed ID should look something like:<br><strong>AGENT-Alex-Viper-247</strong>",
+  "starterCode": "# AGENT ID GENERATOR - Morpheus Security Systems\n# Mission: complete the code below\n\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"AGENT REGISTRATION TERMINAL\")\nprint()\n\n# Step 1: Collect user input\nname = input(\"Enter your first name: \")\nteam = input(\"Enter your team: \")\nagent_number = input(\"Enter a 3-digit number: \")\n\n# Step 2: Build the Agent ID\n# Replace ??? to correctly combine the information\nagent_id = \"AGENT-\" + ??? + \"-\" + ??? + \"-\" + ???\n\n# Step 3: Display the result\nprint()\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Agent ID:\", agent_id)\nprint(\"Status: ACTIVE\")\n",
+  "hints": [
+    "You already collected the information and stored it in three variables: name, team and agent_number.",
+    "Use + to join pieces of text and variables together.",
+    "The Agent ID must follow this pattern: AGENT-name-team-number.",
+    "You do not need quotation marks around a variable name."
+  ],
+  "codeChecks": [
+    {
+      "contains": "\"AGENT-\"",
+      "message": "Your Agent ID needs to begin with AGENT-."
+    },
+    {
+      "contains": "+ name +",
+      "message": "Use the name variable when building the Agent ID."
+    },
+    {
+      "contains": "+ team +",
+      "message": "Use the team variable when building the Agent ID."
+    },
+    {
+      "contains": "+ agent_number",
+      "message": "Use the agent_number variable when building the Agent ID."
+    }
+  ],
+  "successMessage": "Agent ID structure verified! Run your program and check that it creates an ID in the format AGENT-name-team-number."
+}
