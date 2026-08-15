@@ -1,13 +1,13 @@
 {
   "title": "💻 Mission 1 — Agent ID Generator",
   "subtitle": "Create a formatted Morpheus agent identification code.",
-  "instructions": "Replace each <strong>\"____\"</strong> with the correct variable: <strong>name</strong>, <strong>team</strong>, <strong>agent_number</strong> or <strong>agent_id</strong>.<br><br>Your Agent ID must use the order: <strong>name-team-agent number</strong>.",
-  "starterCode": "# AGENT ID GENERATOR - Morpheus Security Systems\n\n# Step 1: Collect user input\nname = input(\"Enter your first name: \")\nteam = input(\"Enter your team: \")\nagent_number = input(\"Enter a 3-digit number: \")\n\n# Step 2: Build the Agent ID\n# Replace each \"____\" with the correct variable (name, team, or agent_number)\nagent_id = \"____\" + \"-\" + \"____\" + \"-\" + \"____\"\n\n# Step 3: Display the result\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Agent ID:\", agent_id)\nprint(\"Status: ACTIVE\")\n",
+  "instructions": "<strong>Your mission:</strong> complete the Agent ID Generator by replacing each <strong>???</strong> with the correct variable.<br><br>Use <strong>name</strong>, <strong>team</strong> and <strong>agent_number</strong> to build the Agent ID. Then use <strong>agent_id</strong> to display the completed ID.",
+  "starterCode": "# AGENT ID GENERATOR - Morpheus Security Systems\n\n# Step 1: Collect user input\nname = input(\"Enter your first name: \")\nteam = input(\"Enter your team: \")\nagent_number = input(\"Enter a 3-digit number: \")\n\n# Step 2: Build the Agent ID\n# Replace each ??? with the correct variable\nagent_id = ??? + \"-\" + ??? + \"-\" + ???\n\n# Step 3: Display the result\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Agent ID:\", ???)\nprint(\"Status: ACTIVE\")\n",
   "hints": [
     "The required order for the Agent ID is name, team, then agent_number.",
-    "Remove the quotation marks around each blank. You want Python to use the value stored in the variable, not the text \"____\".",
+    "Replace each ??? with a variable name. Do not add quotation marks.",
     "Step 2 should begin: agent_id = name + ...",
-    "The blank in Step 3 should be replaced with the agent_id variable."
+    "In Step 3, replace ??? with the agent_id variable you created."
   ],
   "codeChecks": [
     {
@@ -16,8 +16,8 @@
     },
     {
       "contains": "print(\"Agent ID:\", agent_id)",
-      "message": "In Step 3, print the agent_id variable instead of the blank."
+      "message": "In Step 3, replace ??? with the agent_id variable."
     }
   ],
-  "successMessage": "Agent ID complete! Run your program and check that it displays your name, team and agent number correctly."
+  "successMessage": "Mission complete! Your Agent ID Generator uses the correct variables. Run your program and check the result."
 }
