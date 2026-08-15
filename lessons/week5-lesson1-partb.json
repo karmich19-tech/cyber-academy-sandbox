@@ -1,0 +1,16 @@
+{
+  "title": "🔐 Mission 2 — Login Simulation",
+  "subtitle": "Build a secure login check using if/else and logical operators.",
+  "instructions": "Replace each <strong>\"____\"</strong> with the correct value so the login only grants access to the right username AND password.",
+  "starterCode": "# LOGIN SIMULATION - Morpheus Security Systems\n# Mission 2: complete the code below\n\n# Step 1: Collect user input\nusername = input(\"Username: \")\npassword = input(\"Password: \")\n\n# Step 2: Check the login\n# Replace each \"____\" with the correct value\nif username == \"____\" and password == \"____\":\n    print(\"Access granted\")\nelse:\n    print(\"Access denied\")\n",
+  "hints": [
+    "Check your workbook — what username and password should this login accept?",
+    "and means BOTH conditions must be true before access is granted.",
+    "Test it twice: once with the correct details, once with the wrong ones, to check both the if and the else run properly."
+  ],
+  "codeChecks": [
+    { "contains": "username == \"agent\"", "message": "Set the correct username to check for." },
+    { "contains": "password == \"1234\"", "message": "Set the correct password to check for." }
+  ],
+  "successMessage": "Your login check is complete. Run it and test both a correct and an incorrect login to make sure else works too."
+}
