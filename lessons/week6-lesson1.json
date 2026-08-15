@@ -1,0 +1,20 @@
+{
+  "title": "🔐 Mission — Lockout System",
+  "subtitle": "Build a 3-attempt PIN lockout using a while loop.",
+  "instructions": "This is a build-it-yourself mission — there are no blanks to fill in. Rebuild the lockout system from your workbook's worked example, using CORRECT_PIN below.",
+  "starterCode": "# LOCKOUT SYSTEM - Morpheus Security Systems\n# Mission: build a 3-attempt PIN lockout system\n\nattempts = 0\nCORRECT_PIN = \"1234\"\n\n# Your mission: write the while loop here\n# It should:\n#   - Keep asking for a PIN while attempts is less than 3\n#   - Grant access and stop asking if the PIN is correct\n#   - Otherwise, count the attempt and tell the user how many tries are left\n#   - Print \"Account LOCKED\" if all 3 attempts are used without success\n\n# HINT: this is the same structure your teacher modelled on the whiteboard\n# and that's copied into your workbook — rebuild it here from memory,\n# checking your workbook only if you get stuck.\n",
+  "hints": [
+    "Start with while attempts < 3: — the loop keeps going as long as there are attempts left.",
+    "Inside the loop: ask for a PIN, then check it with if/else, just like your Week 5 login check.",
+    "If the PIN is correct: print a success message and use break to stop the loop immediately.",
+    "If the PIN is wrong: add 1 to attempts and print how many tries are left (3 - attempts).",
+    "After the loop, check if attempts == 3 to print the lockout message."
+  ],
+  "codeChecks": [
+    { "contains": "while attempts < 3", "message": "Use a while loop that repeats while attempts is less than 3." },
+    { "contains": "CORRECT_PIN", "message": "Compare the entered PIN against CORRECT_PIN." },
+    { "contains": "attempts = attempts + 1", "message": "Add 1 to attempts each time the PIN is wrong." },
+    { "contains": "break", "message": "Use break to stop the loop once access is granted." }
+  ],
+  "successMessage": "Your lockout system works. Test all three paths: correct on try 1, correct after some failures, and a full lockout after 3 failures. Ready for Silver? Let the user set their own PIN first. Ready for Gold? Add a countdown message and a friendlier lockout message."
+}
