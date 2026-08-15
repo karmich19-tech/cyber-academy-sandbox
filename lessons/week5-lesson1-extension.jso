@@ -1,0 +1,16 @@
+{
+  "title": "🚀 Extension Challenge — Your Own Login",
+  "subtitle": "Let each user set their own username and password, then check it.",
+  "instructions": "Steps 1 and 2 are already done for you. Replace each <strong>???</strong> in Step 3 so the login only grants access when someone enters back exactly what they set.",
+  "starterCode": "# LOGIN SIMULATION - EXTENSION CHALLENGE\n# Morpheus Security Systems\n\n# Step 1: Let the user set their own login\nset_username = input(\"Set your username: \")\nset_password = input(\"Set your password: \")\n\n# Step 2: Try logging in\nusername = input(\"Username: \")\npassword = input(\"Password: \")\n\n# Step 3: Check the login\n# Replace each ??? with the correct variable\nif username == ??? and password == ???:\n    print(\"Access granted\")\nelse:\n    print(\"Access denied\")\n",
+  "hints": [
+    "You collected two usernames and two passwords — one when setting up, one when logging in.",
+    "Compare the login attempt to what was set, not to a fixed word like \"agent\".",
+    "== compares two variables' values, just like you did with the fixed password in Mission 2."
+  ],
+  "codeChecks": [
+    { "contains": "username == set_username", "message": "Compare username to set_username." },
+    { "contains": "password == set_password", "message": "Compare password to set_password." }
+  ],
+  "successMessage": "Well done! Now test it twice: once entering matching details (Access granted), once entering different details (Access denied). Then close and reopen the sandbox — notice it's forgotten everything."
+}
