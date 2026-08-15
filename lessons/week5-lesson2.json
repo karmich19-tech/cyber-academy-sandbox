@@ -1,16 +1,18 @@
 {
-  "title": "🔒 Mission — Password Validator",
-  "subtitle": "Check a password against all five Morpheus security rules.",
-  "instructions": "Two rules are already checked for you. Replace <strong>None</strong> on the has_lower and has_digit lines with the correct check, following the same pattern used for has_upper and has_special.",
-  "starterCode": "# PASSWORD VALIDATOR - Morpheus Security Systems\n# Mission: complete the validation logic\n\npassword = input(\"Enter a password to check: \")\n\n# Step 1: Check each rule\n# Some checks are complete. Replace each None with the correct check.\nis_long_enough = len(password) >= 12\nhas_upper = any(c.isupper() for c in password)\nhas_lower = None\nhas_digit = None\nhas_special = any(not c.isalnum() and not c.isspace() for c in password)\n\n# Step 2: Count how many rules are passed\nrules_passed = 0\nif is_long_enough:\n    rules_passed += 1\nif has_upper:\n    rules_passed += 1\nif has_lower:\n    rules_passed += 1\nif has_digit:\n    rules_passed += 1\nif has_special:\n    rules_passed += 1\n\n# Step 3: Display the rule results\nprint()\nprint(\"=== MORPHEUS PASSWORD ASSESSMENT ===\")\nprint(f\"Password length: {len(password)} characters\")\nprint()\n\nprint(f\"Long enough (12+): {is_long_enough}\")\nprint(f\"Contains uppercase: {has_upper}\")\nprint(f\"Contains lowercase: {has_lower}\")\nprint(f\"Contains digit: {has_digit}\")\nprint(f\"Contains special character: {has_special}\")\n\nprint()\nprint(f\"Rules passed: {rules_passed} out of 5\")\n\n# Step 4: Display the strength rating\nif rules_passed == 5:\n    print(\"Strength: STRONG\")\nelif rules_passed == 4:\n    print(\"Strength: MODERATE - almost there\")\nelse:\n    print(\"Strength: WEAK - choose a better password\")\n",
+  "title": "🚀 Extension — Secure Login Simulation",
+  "subtitle": "Build a login system with a 3-attempt lockout.",
+  "instructions": "This is a build-it-yourself extension — there are no blanks to fill in. Write the login logic below the starter comments, using if/elif/else to handle three attempts (we'll learn a much neater way to do this with while loops next week).",
+  "starterCode": "# SECURE LOGIN SIMULATION - Morpheus Security Systems\n# Stored credentials (in a real system these would be hashed!)\nCORRECT_USERNAME = \"agent_m\"\nCORRECT_PASSWORD = \"Morpheus2024!\"\nMAX_ATTEMPTS = 3\n\nattempts = 0\n\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Please log in to continue.\")\nprint()\n\n# Your mission: write the login logic here\n# It should:\n#   - Ask for username and password\n#   - Check if both are correct\n#   - Count failed attempts\n#   - Lock after MAX_ATTEMPTS failures\n#   - Print a success or failure message each time\n\n# HINT: while loops would make this neater, but we haven't learned them yet\n# For now, use if/elif/else to handle the 3 attempt scenarios one at a time\n",
   "hints": [
-    "Look at how has_upper and has_special are written — has_lower and has_digit follow exactly the same any(... for c in password) pattern.",
-    "has_lower needs c.islower() instead of c.isupper().",
-    "has_digit needs c.isdigit() instead of c.isupper()."
+    "Start simple: ask for username and password, then check them with one if/else, just like Mission 2 in Lesson 1.",
+    "For attempt 2 and 3, you'll need to nest another if/elif/else inside the else of the one before it — it gets repetitive, which is exactly why while loops (next week) are so useful.",
+    "Use attempts to track how many failures have happened, and MAX_ATTEMPTS - attempts to work out how many tries are left.",
+    "Print 'Account LOCKED. Too many failed attempts.' once all 3 tries have failed."
   ],
   "codeChecks": [
-    { "contains": "has_lower = any(c.islower() for c in password)", "message": "Fix has_lower using the any(...) pattern with c.islower()." },
-    { "contains": "has_digit = any(c.isdigit() for c in password)", "message": "Fix has_digit using the any(...) pattern with c.isdigit()." }
+    { "contains": "CORRECT_USERNAME", "message": "Compare the entered username against CORRECT_USERNAME." },
+    { "contains": "CORRECT_PASSWORD", "message": "Compare the entered password against CORRECT_PASSWORD." },
+    { "contains": "attempts", "message": "Track the number of failed attempts using the attempts variable." }
   ],
-  "successMessage": "Your validator checks all five rules correctly. Test it with a short password and a long, varied one to see WEAK, MODERATE and STRONG all appear."
+  "successMessage": "Nice work — that's a genuinely tricky exercise without loops! Test all three paths: success on try 1, success after 1-2 failures, and a full lockout after 3 failures."
 }
