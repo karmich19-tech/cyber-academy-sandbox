@@ -1,26 +1,16 @@
 {
-  "title": "\ud83d\udcbb Mission 2 \u2014 Secure Login Simulation",
-  "subtitle": "Repair the Morpheus Security Systems login check.",
-  "instructions": "<strong>Your mission:</strong> complete the login logic by replacing each\n<strong>???</strong>.<br><br>\nThe program must ask for a username and password, compare both entries with\nthe stored credentials, and display either <strong>ACCESS GRANTED</strong> or\n<strong>ACCESS DENIED</strong>.",
-  "starterCode": "# SECURE LOGIN SIMULATION - Morpheus Security Systems\n\n# Stored credentials\n# In a real system, passwords should never be stored as plain text.\nCORRECT_USERNAME = \"agent_m\"\nCORRECT_PASSWORD = \"Morpheus2024!\"\n\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Please log in to continue.\")\nprint()\n\n# Step 1: Collect the user's login details\nusername = input(\"Username: \")\npassword = input(\"Password: \")\n\n# Step 2: Check both entries\n# Replace ??? with the correct condition\nif ???:\n    print(\"ACCESS GRANTED\")\n    print(\"Welcome, Agent M.\")\nelse:\n    print(\"ACCESS DENIED\")\n    print(\"Incorrect username or password.\")\n",
+  "title": "🔒 Mission — Password Validator",
+  "subtitle": "Check a password against all five Morpheus security rules.",
+  "instructions": "Two rules are already checked for you. Replace <strong>None</strong> on the has_lower and has_digit lines with the correct check, following the same pattern used for has_upper and has_special.",
+  "starterCode": "# PASSWORD VALIDATOR - Morpheus Security Systems\n# Mission: complete the validation logic\n\npassword = input(\"Enter a password to check: \")\n\n# Step 1: Check each rule\n# Some checks are complete. Replace each None with the correct check.\nis_long_enough = len(password) >= 12\nhas_upper = any(c.isupper() for c in password)\nhas_lower = None\nhas_digit = None\nhas_special = any(not c.isalnum() and not c.isspace() for c in password)\n\n# Step 2: Count how many rules are passed\nrules_passed = 0\nif is_long_enough:\n    rules_passed += 1\nif has_upper:\n    rules_passed += 1\nif has_lower:\n    rules_passed += 1\nif has_digit:\n    rules_passed += 1\nif has_special:\n    rules_passed += 1\n\n# Step 3: Display the rule results\nprint()\nprint(\"=== MORPHEUS PASSWORD ASSESSMENT ===\")\nprint(f\"Password length: {len(password)} characters\")\nprint()\n\nprint(f\"Long enough (12+): {is_long_enough}\")\nprint(f\"Contains uppercase: {has_upper}\")\nprint(f\"Contains lowercase: {has_lower}\")\nprint(f\"Contains digit: {has_digit}\")\nprint(f\"Contains special character: {has_special}\")\n\nprint()\nprint(f\"Rules passed: {rules_passed} out of 5\")\n\n# Step 4: Display the strength rating\nif rules_passed == 5:\n    print(\"Strength: STRONG\")\nelif rules_passed == 4:\n    print(\"Strength: MODERATE - almost there\")\nelse:\n    print(\"Strength: WEAK - choose a better password\")\n",
   "hints": [
-    "Use == to compare a value with the stored username or password.",
-    "Both the username and password must be correct, so join the two comparisons using and.",
-    "The full condition begins: username == CORRECT_USERNAME and ..."
+    "Look at how has_upper and has_special are written — has_lower and has_digit follow exactly the same any(... for c in password) pattern.",
+    "has_lower needs c.islower() instead of c.isupper().",
+    "has_digit needs c.isdigit() instead of c.isupper()."
   ],
   "codeChecks": [
-    {
-      "contains": "username == CORRECT_USERNAME",
-      "message": "Compare username with CORRECT_USERNAME using ==."
-    },
-    {
-      "contains": "password == CORRECT_PASSWORD",
-      "message": "Compare password with CORRECT_PASSWORD using ==."
-    },
-    {
-      "contains": " and ",
-      "message": "Join the two comparisons using and."
-    }
+    { "contains": "has_lower = any(c.islower() for c in password)", "message": "Fix has_lower using the any(...) pattern with c.islower()." },
+    { "contains": "has_digit = any(c.isdigit() for c in password)", "message": "Fix has_digit using the any(...) pattern with c.isdigit()." }
   ],
-  "successMessage": "Your login condition contains the required comparisons. Run the program and test both correct and incorrect credentials."
+  "successMessage": "Your validator checks all five rules correctly. Test it with a short password and a long, varied one to see WEAK, MODERATE and STRONG all appear."
 }
