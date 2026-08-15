@@ -1,19 +1,23 @@
 {
   "title": "💻 Mission 1 — Agent ID Generator",
   "subtitle": "Create a formatted Morpheus agent identification code.",
-  "instructions": "Replace each <strong>\"____\"</strong> with the correct variable (name, team, or agent_number).",
+  "instructions": "Replace each <strong>\"____\"</strong> with the correct variable: <strong>name</strong>, <strong>team</strong>, <strong>agent_number</strong> or <strong>agent_id</strong>.<br><br>Your Agent ID must use the order: <strong>name-team-agent number</strong>.",
   "starterCode": "# AGENT ID GENERATOR - Morpheus Security Systems\n\n# Step 1: Collect user input\nname = input(\"Enter your first name: \")\nteam = input(\"Enter your team: \")\nagent_number = input(\"Enter a 3-digit number: \")\n\n# Step 2: Build the Agent ID\n# Replace each \"____\" with the correct variable (name, team, or agent_number)\nagent_id = \"____\" + \"-\" + \"____\" + \"-\" + \"____\"\n\n# Step 3: Display the result\nprint(\"=== MORPHEUS SECURITY SYSTEMS ===\")\nprint(\"Agent ID:\", \"____\")\nprint(\"Status: ACTIVE\")\n",
   "hints": [
     "The required order for the Agent ID is name, team, then agent_number.",
-    "Remove the quotes around each blank — you want the variable's value, not the literal text \"____\".",
-    "The last blank in Step 3 should be the agent_id variable you built in Step 2."
+    "Remove the quotation marks around each blank. You want Python to use the value stored in the variable, not the text \"____\".",
+    "Step 2 should begin: agent_id = name + ...",
+    "The blank in Step 3 should be replaced with the agent_id variable."
   ],
   "codeChecks": [
-    { "contains": "\"____\" + \"-\" + \"____\" + \"-\" + \"____\"", "message": "In Step 2, replace every \"____\" with a variable." },
-    { "contains": "name", "message": "Use the name variable." },
-    { "contains": "team", "message": "Use the team variable." },
-    { "contains": "agent_number", "message": "Use the agent_number variable." },
-    { "contains": "print(\"Agent ID:\", agent_id)", "message": "In Step 3, print the agent_id variable." }
+    {
+      "contains": "agent_id = name + \"-\" + team + \"-\" + agent_number",
+      "message": "Build the Agent ID using name, team and agent_number in that order."
+    },
+    {
+      "contains": "print(\"Agent ID:\", agent_id)",
+      "message": "In Step 3, print the agent_id variable instead of the blank."
+    }
   ],
-  "successMessage": "Your code includes the required variables. Run it and check that your Agent ID and status print correctly."
+  "successMessage": "Agent ID complete! Run your program and check that it displays your name, team and agent number correctly."
 }
