@@ -1,34 +1,16 @@
 {
-  "title": "💻 Mission 3 — Password Validator",
-  "subtitle": "Assess a password against five Morpheus Security Systems rules.",
-  "instructions": "<strong>Your mission:</strong> complete the password validation logic.<br><br>The program must check that the password:<br>• is at least 12 characters long;<br>• contains at least one uppercase letter;<br>• contains at least one lowercase letter;<br>• contains at least one digit; and<br>• contains at least one special character that is not a letter, digit or space.<br><br>The program must then display:<br>• <strong>WEAK</strong> — passes 0 to 3 rules;<br>• <strong>MODERATE</strong> — passes 4 rules;<br>• <strong>STRONG</strong> — passes all 5 rules.",
-  "starterCode": "# PASSWORD VALIDATOR — Morpheus Security Systems\n# Mission: complete the validation logic\n\npassword = input(\"Enter a password to check: \")\n\n# Step 1: Check each rule\n# Some checks are complete. Replace each ???.\n\nis_long_enough = len(password) >= 12\nhas_upper = any(c.isupper() for c in password)\nhas_lower = ???\nhas_digit = ???\nhas_special = any(not c.isalnum() and not c.isspace() for c in password)\n\n# Step 2: Count how many rules are passed\n\nrules_passed = 0\n\nif is_long_enough:\n    rules_passed += 1\n\nif has_upper:\n    rules_passed += 1\n\nif has_lower:\n    rules_passed += 1\n\nif has_digit:\n    rules_passed += 1\n\nif has_special:\n    rules_passed += 1\n\n# Step 3: Display the rule results\n\nprint()\nprint(\"=== MORPHEUS PASSWORD ASSESSMENT ===\")\nprint(f\"Password length: {len(password)} characters\")\nprint()\n\nprint(f\"Long enough (12+): {is_long_enough}\")\nprint(f\"Contains uppercase: {has_upper}\")\nprint(f\"Contains lowercase: {has_lower}\")\nprint(f\"Contains digit: {has_digit}\")\nprint(f\"Contains special character: {has_special}\")\n\nprint()\nprint(f\"Rules passed: {rules_passed} out of 5\")\n\n# Step 4: Display the strength rating\n\nif rules_passed == 5:\n    print(\"Strength: STRONG ✓\")\n\nelif rules_passed == 4:\n    print(\"Strength: MODERATE — almost there\")\n\nelse:\n    print(\"Strength: WEAK — choose a better password\")\n\n# EXTENSION — COMMON PASSWORD CHECK\n# This is a short practice list only.\n# Never enter real personal passwords into classroom activities.\n\ncommon_passwords = [\n    \"password\",\n    \"123456\",\n    \"qwerty\",\n    \"letmein\",\n    \"morpheus\"\n]\n\nif password.lower() in common_passwords:\n    print(\"WARNING: This password appears in a common-password list!\")\n",
+  "title": "🔒 Mission — Password Validator",
+  "subtitle": "Check a password against all five Morpheus security rules.",
+  "instructions": "Two rules are already checked for you. Replace <strong>None</strong> on the has_lower and has_digit lines with the correct check, following the same pattern used for has_upper and has_special.",
+  "starterCode": "# PASSWORD VALIDATOR - Morpheus Security Systems\n# Mission: complete the validation logic\n\npassword = input(\"Enter a password to check: \")\n\n# Step 1: Check each rule\n# Some checks are complete. Replace each None with the correct check.\nis_long_enough = len(password) >= 12\nhas_upper = any(c.isupper() for c in password)\nhas_lower = None\nhas_digit = None\nhas_special = any(not c.isalnum() and not c.isspace() for c in password)\n\n# Step 2: Count how many rules are passed\nrules_passed = 0\nif is_long_enough:\n    rules_passed += 1\nif has_upper:\n    rules_passed += 1\nif has_lower:\n    rules_passed += 1\nif has_digit:\n    rules_passed += 1\nif has_special:\n    rules_passed += 1\n\n# Step 3: Display the rule results\nprint()\nprint(\"=== MORPHEUS PASSWORD ASSESSMENT ===\")\nprint(f\"Password length: {len(password)} characters\")\nprint()\n\nprint(f\"Long enough (12+): {is_long_enough}\")\nprint(f\"Contains uppercase: {has_upper}\")\nprint(f\"Contains lowercase: {has_lower}\")\nprint(f\"Contains digit: {has_digit}\")\nprint(f\"Contains special character: {has_special}\")\n\nprint()\nprint(f\"Rules passed: {rules_passed} out of 5\")\n\n# Step 4: Display the strength rating\nif rules_passed == 5:\n    print(\"Strength: STRONG\")\nelif rules_passed == 4:\n    print(\"Strength: MODERATE - almost there\")\nelse:\n    print(\"Strength: WEAK - choose a better password\")\n",
   "hints": [
-    "Use the same pattern as has_upper, but change isupper() to the method that checks for lowercase letters.",
-    "To check for a number, use the string method isdigit().",
-    "The completed lines begin with any(c.islower() ... and any(c.isdigit() ..."
+    "Look at how has_upper and has_special are written — has_lower and has_digit follow exactly the same any(... for c in password) pattern.",
+    "has_lower needs c.islower() instead of c.isupper().",
+    "has_digit needs c.isdigit() instead of c.isupper()."
   ],
   "codeChecks": [
-    {
-      "contains": "any(c.islower() for c in password)",
-      "message": "Complete the lowercase check using islower()."
-    },
-    {
-      "contains": "any(c.isdigit() for c in password)",
-      "message": "Complete the digit check using isdigit()."
-    },
-    {
-      "contains": "if rules_passed == 5:",
-      "message": "Keep the STRONG rating for five rules passed."
-    },
-    {
-      "contains": "elif rules_passed == 4:",
-      "message": "Keep the MODERATE rating for four rules passed."
-    },
-    {
-      "contains": "password.lower() in common_passwords",
-      "message": "Keep the extension common-password comparison."
-    }
+    { "contains": "has_lower = any(c.islower() for c in password)", "message": "Fix has_lower using the any(...) pattern with c.islower()." },
+    { "contains": "has_digit = any(c.isdigit() for c in password)", "message": "Fix has_digit using the any(...) pattern with c.isdigit()." }
   ],
-  "successMessage": "Your password validator includes the required lowercase and digit checks. Run it several times and test weak, moderate and strong passwords."
+  "successMessage": "Your validator checks all five rules correctly. Test it with a short password and a long, varied one to see WEAK, MODERATE and STRONG all appear."
 }
