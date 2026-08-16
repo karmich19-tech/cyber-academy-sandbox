@@ -1,0 +1,16 @@
+{
+  "title": "🗂️ Mission — Modular Security System",
+  "subtitle": "Split your code into a security.py module, then import and use it.",
+  "instructions": "Replace each ??? \u2014 one inside security.py's function, one where you call it. The SETUP section is done for you: it creates security.py as a real, separate file so you can genuinely import it, just like a real Python project.",
+  "starterCode": "# MODULAR SECURITY SYSTEM - Morpheus Security Systems\n# Mission: complete the code below\n\n# --- SETUP: this creates security.py as a real, separate file ---\n# (In a real project, this file would already exist on its own.\n#  We create it here first so this sandbox can import it, exactly\n#  like importing any other file in a real Python project.)\nsecurity_code = \"\"\"\ndef check_pin(pin, correct):\n    return \"???\"\n\"\"\"\nwith open(\"security.py\", \"w\") as f:\n    f.write(security_code)\n# --- END SETUP ---\n\n# Now security.py exists. Import it, just like on the content page.\nimport security\n\n# Your mission: call check_pin() from security.py\nresult = \"???\"\nprint(result)\n",
+  "hints": [
+    "Inside security.py, check_pin should compare pin to correct using == — replace \"???\" with pin == correct (no quotes, since this is a real comparison, not text).",
+    "To call a function from an imported file, use dot notation: security.check_pin(...)",
+    "Try security.check_pin(\"1234\", \"1234\") to test it — it should print True."
+  ],
+  "codeChecks": [
+    { "contains": "return pin == correct", "message": "Fix check_pin in security.py to compare pin and correct with ==." },
+    { "contains": "security.check_pin(", "message": "Call check_pin() using dot notation: security.check_pin(...)" }
+  ],
+  "successMessage": "Your modular security system works! You've genuinely split code across two files and imported one into the other. Ready for Silver? Add a menu() function in this file and a validate() function inside security.py. Ready for Gold? Combine this with last lesson's lockout loop."
+}
