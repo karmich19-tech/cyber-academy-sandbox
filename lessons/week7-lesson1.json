@@ -1,0 +1,22 @@
+{
+  "title": "\ud83d\udd12 Mission \u2014 File Storage + Hashing",
+  "subtitle": "Save a hashed password to a file, the way a real system would.",
+  "instructions": "Replace each ??? \u2014 hash the password, then save it to a file using append mode so existing accounts aren't erased.",
+  "starterCode": "# FILE STORAGE + HASHING - Morpheus Security Systems\n# Mission: complete the code below\n\nimport hashlib\n\nusername = input(\"Choose a username: \")\npassword = input(\"Choose a password: \")\n\n# Step 1: Hash the password (no salt yet \u2014 that's Silver tier)\nhashed = hashlib.sha256(\"???\".encode()).hexdigest()\n\n# Step 2: Save username and hash to a file WITHOUT erasing existing accounts\nwith open(\"users.txt\", \"w\") as f:\n    f.write(f\"{username}:{hashed}\\n\")\n\nprint(\"Account created and saved.\")\n\n# Step 3: Read the file back to confirm it saved\nwith open(\"users.txt\", \"r\") as f:\n    for line in f.readlines():\n        print(line.strip())\n",
+  "hints": [
+    "Step 1: hashlib.sha256() needs to hash the actual password variable, not the text \"???\" \u2014 replace \"???\" with password.encode().",
+    "Step 2: which file mode adds to a file without erasing what's already there? Check the Quick Reference on the content page \u2014 it's not r+.",
+    "Run it twice with different usernames \u2014 if both accounts appear in Step 3's output, Step 2 is correct."
+  ],
+  "codeChecks": [
+    {
+      "contains": "hashlib.sha256(password.encode())",
+      "message": "Hash password.encode(), not the placeholder text."
+    },
+    {
+      "contains": "open(\"users.txt\", \"a\")",
+      "message": "Use append mode (\"a\") so existing accounts aren't erased."
+    }
+  ],
+  "successMessage": "Your account storage works! Ready for Silver? Add a salt so identical passwords don't produce identical hashes. Ready for Gold? Write a check_password() function that verifies a login attempt against the stored salt and hash."
+}
