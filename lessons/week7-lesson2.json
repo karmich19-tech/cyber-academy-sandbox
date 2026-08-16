@@ -1,0 +1,18 @@
+{
+  "title": "🧪 Mission — Test & Debug the Validator",
+  "subtitle": "Write test cases against a password validator — and see if you can find a bug.",
+  "instructions": "Replace each ??? with a real password to test. Write one VALID test, one INVALID test, and one EDGE CASE test. Think carefully about the edge case \u2014 it's the one most likely to reveal something interesting.",
+  "starterCode": "# TESTING & DEBUGGING - Morpheus Security Systems\n# Mission: test this password validator and log your results\n\ndef validate(password):\n    return len(password) > 8\n\n# Step 1: Write 3 test cases below\n# One VALID, one INVALID, and one EDGE CASE (think about the exact boundary!)\n\ntest1 = validate(\"???\")\nprint(f\"Test 1: validate(...) = {test1}\")\n\ntest2 = validate(\"???\")\nprint(f\"Test 2: validate(...) = {test2}\")\n\ntest3 = validate(\"???\")\nprint(f\"Test 3: validate(...) = {test3}\")\n\n# Step 2: Did one of your tests give a result you didn't expect?\n# If so, you may have found a bug in validate() above \u2014 look closely\n# at the comparison operator. Fix it, then re-run all three tests.\n",
+  "hints": [
+    "A valid test: try a password you'd expect to pass, like a normal 10+ character password.",
+    "An invalid test: try something clearly too short, like a 3-character password.",
+    "An edge case: the task says 'at least 8 characters' \u2014 what happens with a password of EXACTLY 8 characters? Try it.",
+    "If your edge case gave a surprising result, check the comparison operator in validate() \u2014 is > the same as >=?"
+  ],
+  "codeChecks": [
+    { "contains": "test1 = validate(", "message": "Complete Test 1 with a real password." },
+    { "contains": "test2 = validate(", "message": "Complete Test 2 with a real password." },
+    { "contains": "test3 = validate(", "message": "Complete Test 3 with a real password." }
+  ],
+  "successMessage": "Nice testing! If your edge case used exactly 8 characters, you should have found that validate() incorrectly rejects it. Did you spot that > should be >= ? Fix it and confirm all three tests now behave as expected. Ready for Silver? Write test cases for your Week 7 hashing/file storage functions too. Ready for Gold? Swap sandbox links with a partner and find a bug in each other's code."
+}
